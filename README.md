@@ -33,7 +33,7 @@
     * Identity management (in-browser persistent authentication)
     * Storing moves onchain -> unnecessary overhead or worth it
     * Game parametes: {global_time_limit, on_move_time_increment, timeout_nomove, timeout_noshow, bet_size, color_random, third_party_address, player1_address, player2_address}
-    * Predeterined third party donation wallet options (EDRi, EFF, WWF, APPL)
+    * Predeterined third party donation wallet options (EDRi, EFF, WWF)
     
     <br>
 
