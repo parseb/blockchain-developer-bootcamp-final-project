@@ -40,7 +40,7 @@ ___
 
 ## __Proof of pizza__
 Themes: Distributed Democratic Ownership, Social Economy
-
+___
 
 ## __Participative Budgeting with Quadratic Funding__
 Themes: Participative Democracy Platform ([Porto Alegre](https://www.wri.org/insights/what-if-citizens-set-city-budgets-experiment-captivated-world-participatory-budgeting))
