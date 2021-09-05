@@ -1,46 +1,72 @@
 
 # Final Project Idea(s)
 
-* Chess Wager
-* Proof of Pizza
-* Participative Public Budgeting with Quadratic Funding
 
 ## __Chess Wager__
+**Themes**: board game, gambling, chesspiece measuring contest
+<br>
 
+1 vs 1 game indulging the ego of friendly chess rivals by allowing them to stake on their chess prowess. In case of draw or stalemate funds are redirected to a mutually agreed upon wallet.
 
-Chess game allowing players to place a bet on who will win.
+<br>
 
+1. Alice authenticates and creates a new custom game. <br>
 
-1. Players 1 accesses website, identifies (metamask?) and creates a new custom game. <br>
-    (Parameters: global time limit, time increments, timeout, bet size, white/back/random, address to send funds to in case of draw [no refunds])
-2. Player 1 submits the game object and signs consent   for contract execution.
+2. Alice submits the game object and signs consent for contract execution.
 
-3. Player 2 accesses the game page, verifies game parameters and sings agreement.
+3. Bob accesses the game page, verifies game parameters and gives consent.
 
-4. Players need to indicate they are ready for the game to start. (in-browser identity management - metamask - cookie - devise?)
+4. Alice and Bob indicate they are ready for the game to start.
 
-5. White starts, each move is signed and stored in the contract (unnecessary overhead ?)
+5. White starts, each move is signed and stored onchain.
 
-6. The game ends. (player wins, draw, resignation, timeout) Funds are transfered to the game endstate destination wallet.
+6. Winner or lackthereof is determined.
 
-    ### Known Unknows Design Choices
+7. Game balance is transfered to the legitimate wallet.
+
+    <br>
+
+    ### Known Unknows / Design Choices
     * Best game state for wager deposit (at creation and at join VS at end execution)
+    * Secret asymetric bet size (requires endgame state player cooperation?)
     * No frontend option -> onchain state and execution
+    * Identity management (in-browser persistent authentication)
+    * Storing moves onchain -> unnecessary overhead or worth it
+    * Game parametes: {global_time_limit, on_move_time_increment, timeout_nomove, timeout_noshow, bet_size, color_random, third_party_address, player1_address, player2_address}
+    
+    <br>
 
     ### Problems
-    * Cheating (detection / escrow / blind peer review VS it_is_what_it_is VS cheat as ingame variable)
+    * Cheating (detection / escrow / blind peer review VS cheaters_be_cheating (it_is_what_it_is) VS cheat as ingame variable)
+    
+    <br>
+
 
     ### Business model
 
-    ### Will make use of : 
+    <br>
+
+    ### Supply chain 
     *   [chess.js](https://github.com/jhlywa/chess.js.git)
     *   [chessboard.js](https://github.com/oakmac/chessboardjs/)
 
+<br>
+
 ___
+
+<br>
+
 
 ## __Proof of pizza__
-Themes: Distributed Democratic Ownership, Social Economy
+**Themes**: Distributed Democratic Ownership, Social Economy
+
+<br>
+
 ___
 
+<br>
+
+
+
 ## __Participative Budgeting with Quadratic Funding__
-Themes: Participative Democracy Platform ([Porto Alegre](https://www.wri.org/insights/what-if-citizens-set-city-budgets-experiment-captivated-world-participatory-budgeting))
+**Themes**: Participative Democracy ([Porto Alegre](https://www.wri.org/insights/what-if-citizens-set-city-budgets-experiment-captivated-world-participatory-budgeting)), Public Sector
