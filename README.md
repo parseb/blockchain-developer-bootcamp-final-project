@@ -3,7 +3,7 @@
 
 * Chess Wager
 * Proof of Pizza
-* Participative Budgeting with Quadratic Funding
+* Participative Public Budgeting with Quadratic Funding
 
 ## __Chess Wager__
 
