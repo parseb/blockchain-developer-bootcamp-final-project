@@ -3,7 +3,7 @@
 
 
 ## __Chess Wager__
-**Themes**: board game, gambling, chesspiece measuring contest
+**Themes**: board game, confidence check
 <br>
 
 1 vs 1 game indulging the ego of friendly chess rivals by allowing them to stake on their chess prowess. In case of draw or stalemate funds are redirected to a mutually agreed upon wallet.
