@@ -17,7 +17,7 @@ Chess game allowing players to place a bet on who will win.
 
 3. Player 2 accesses the game page, verifies game parameters and sings agreement.
 
-4. Players need to indicate they are ready for the game to start.
+4. Players need to indicate they are ready for the game to start. (in-browser identity management - metamask - cookie - devise?)
 
 5. White starts, each move is signed and stored in the contract (unnecessary overhead ?)
 
