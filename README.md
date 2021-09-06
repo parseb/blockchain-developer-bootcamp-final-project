@@ -49,7 +49,7 @@
 
     ### Variations
 
-    * Chess Engine (AI) vs Chess Engine (AI) competition with predefined category time limit. (don't think blocktime is an issue as long as they are hashed with submission time in queue)
+    * Chess Engine (AI) vs Chess Engine (AI) competition with predefined category time limit. (don't think blocktime is an issue as long as they are hashed with submission time in queue - I def. don't yet understand this.)
 
     <br>
 
