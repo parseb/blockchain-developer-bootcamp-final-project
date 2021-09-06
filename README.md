@@ -47,6 +47,12 @@
 
     <br>
 
+    ### Variations
+
+    * Chess Engine (AI) vs Chess Engine (AI) competition with predefined category time limit. (don't think blocktime is an issue as long as they are hashed with submission time in queue)
+
+    <br>
+
     ### Supply chain 
     *   [chess.js](https://github.com/jhlywa/chess.js.git)
     *   [chessboard.js](https://github.com/oakmac/chessboardjs/)
