@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "16.11.0",
+    "@babel/plugin-transform-react-jsx": "^7.14.9",
+    "@babel/plugin-transform-react-jsx-self": "^7.14.9",
+    "react": "^17.0.2",
+    "react-chessboard": "^0.0.4",
     "react-dom": "16.11.0",
     "react-scripts": "3.2.0",
     "web3": "1.2.2"
@@ -28,5 +31,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/helper-builder-react-jsx": "^7.15.4"
   }
 }

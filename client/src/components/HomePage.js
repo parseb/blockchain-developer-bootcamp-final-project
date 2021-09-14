@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { Chessboard } from 'react-chessboard';
 
 export default class HomePage extends Component {
   
@@ -8,7 +8,9 @@ export default class HomePage extends Component {
     render() {
 
         return (
-            <h1>a title</h1>
+            <div>
+                <Chessboard id="BasicBoard" />
+            </div>
         ) 
         
     }
