@@ -5,6 +5,7 @@ import getWeb3 from "./getWeb3";
 import HomePage from "./components/HomePage";
 
 import "./App.css";
+import Container from 'react-bootstrap/Container';
 
 class App extends Component {
   state = { storageValue: 0, web3: null, accounts: null, contract: null };
@@ -55,7 +56,8 @@ class App extends Component {
     //   return <div>Loading Web3, accounts, and contract...</div>;
     // }
     return (
-      <div className="App">
+      <Container>
+        <div className="App" width={100}>
         <HomePage />
         {/* <h1>Good to Go!</h1>
         <p>Your Truffle Box is installed and ready.</p>
@@ -69,6 +71,8 @@ class App extends Component {
         </p>
         <div>The stored value is: {this.state.storageValue}</div> */}
       </div>
+      </Container>
+      
     );
   }
 }
