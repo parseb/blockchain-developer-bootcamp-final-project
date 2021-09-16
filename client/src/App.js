@@ -1,14 +1,17 @@
 import React, { Component } from "react";
-import SimpleStorageContract from "./contracts/SimpleStorage.json";
+//import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
 
 import HomePage from "./components/HomePage";
 
 import "./App.css";
-import Container from 'react-bootstrap/Container';
+import { Container, Row, Spinner }  from 'react-bootstrap';
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+  state = { storageValue: 0,
+             web3: null, 
+             accounts: null, 
+             contract: null };
 
   // componentDidMount = async () => {
   //   try {
@@ -52,12 +55,27 @@ class App extends Component {
   // };
 
   render() {
-    // if (!this.state.web3) {
-    //   return <div>Loading Web3, accounts, and contract...</div>;
-    // }
+    //  if (!this.state.web3) {
+    //    return (  
+    //      <Container>
+    //        <Row id='loading spinners'> 
+    //           <Spinner animation="grow" variant="danger"  />
+    //           <Spinner animation="grow" variant="warning" />
+    //           <Spinner animation="grow" variant="primary" />
+    //           <Spinner animation="grow" variant="secondary" />
+    //           <Spinner animation="grow" variant="success" />
+    //           <Spinner animation="grow" variant="danger" />
+    //           <Spinner animation="grow" variant="warning" />
+    //           <Spinner animation="grow" variant="info" />
+    //        </Row>
+    //        <br />
+    //       <h3> Loading Web3, accounts, and contract...   </h3>
+    //      </Container>
+    //         );
+    //  }
     return (
       <Container>
-        <div className="App" width={100}>
+        <div className="App">
         <HomePage />
         {/* <h1>Good to Go!</h1>
         <p>Your Truffle Box is installed and ready.</p>
