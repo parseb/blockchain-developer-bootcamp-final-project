@@ -11,7 +11,7 @@ export default class HomePage extends Component {
         return (
             <Container>
                 
-                <div class="Title" style={{padding:20}}>
+                <div className="Title" style={{padding:20}}>
                     <h3 style={{margin2Top: 20}}> Chess Wager</h3>
                 </div>
                 <hr />
@@ -19,15 +19,15 @@ export default class HomePage extends Component {
                 <Card>
                     <Card.Title>?</Card.Title>
                     <Card.Body >
-                        <p class="text-justify"> 
+                        <p className="text-justify"> 
                         Chess Wager is first of all an experiement in tweeking Chess gameplay. 
                         The aim here is to experiment with in-game time and material advantage
                          as determinants of a continously enacted win/loss ratio.   
                         </p> 
                         <p>
-                        <hr />
-                        </p>
                         
+                        </p>
+                        <hr />
                     </Card.Body>                     
                 </Card>
                 </Row>
