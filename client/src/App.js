@@ -31,10 +31,14 @@ class App extends Component {
         GameContract.abi,
         deployedNetwork && deployedNetwork.address,
       );
-
+      
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance, openGamesList: [] }, this.getGameCount, this.getOpenGames);
+      this.setState({ web3, accounts, contract: instance, openGamesList: [] });
+      
+      this.getGameCount(); 
+      this.getOpenGames();
+
     } catch (error) {
       // Catch any errors for any of the above operations.
       alert(
@@ -53,8 +57,8 @@ class App extends Component {
 
   getOpenGames = async () => {
     const { accounts, contract } = this.state;
-
-    let openGames = await contract.methods.getOpenGames();
+    console.log("I was here dawg!!!!!!!!!!!!!!!!!!");
+    let openGames = await contract.methods.getOpenGames(1);
     
   }
 
