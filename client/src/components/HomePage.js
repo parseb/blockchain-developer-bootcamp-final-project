@@ -2,6 +2,8 @@ import React, { Component } from "react";
 //import { Chessboard } from 'react-chessboard';
 import { Container, Row, Button, Card, Col  } from 'react-bootstrap';
 import ChessBoard2 from "./ChessBoard";
+import { gameList } from "./gameJoinComponent";
+
 
 export default class HomePage extends Component {
 
@@ -35,7 +37,10 @@ export default class HomePage extends Component {
                     <Col>
                         <Card>
                             <Card.Title>Join a Game:</Card.Title>
-                            <Card.Body>     </Card.Body>
+                            <Card.Body>
+                                {/* <gameList g={this.state.openGamesList} /> */}
+                              Unavailable
+                            </Card.Body>
                         </Card>
                     </Col>
                     <Col>

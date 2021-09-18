@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 //pragma solidity >=0.4.22 <0.9.0;
-pragma solidity >=0.5.16;
+pragma solidity >=0.7.0;
 pragma experimental ABIEncoderV2;
 
 contract GameContract {
@@ -8,12 +8,14 @@ contract GameContract {
   address owner3;
   address owner;
   address owner2;
+  uint24 gameId;
   
 //////// Constructor 
 //compiler requires public
-  constructor()  {
+  constructor() {
     owner= msg.sender;
     owner2= address(0x49A3e9f02E8b0a6076f8568361926D54d17730Cb);
+    gameId=1;
   }
 /////// Constructor END
   
@@ -37,7 +39,7 @@ contract GameContract {
     uint gameBalance; 
   }
   
-  uint24 gameId;
+  
   mapping (uint24 => gameData) public games; 
   mapping (address => uint24) myLastGame;
   address[32] gameOwners;
@@ -102,17 +104,13 @@ contract GameContract {
     // }
     emit newGameCreatedEvent(msg.sender,gameId);
     gameId++;
-    return gameId-1;
-    
-    
-    
   }
 
   function getLastGameId() public view returns(uint24) {
-    return gameId-1; 
+    return gameId; 
   }
 
-  function getOpenGames(uint24 gId) public view returns(gameData memory )  {
+  function getGame(uint24 gId) public view returns(gameData memory )  {
       return games[gId];
   }
  

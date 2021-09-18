@@ -9,11 +9,12 @@ import { Container, Row, Spinner }  from 'react-bootstrap';
 import GameContract from "./contracts/GameContract.json";
 
 class App extends Component {
-  state = { storageValue: 0,
+  state = { 
              web3: null, 
              accounts: null, 
              contract: null,
-             gamesTotalCount: 0 };
+             gamesTotalCount: 0,
+             openGamesList: [] };
 
   componentDidMount = async () => {
     try {
@@ -34,10 +35,11 @@ class App extends Component {
       
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance, openGamesList: [] });
+      this.setState({ web3, accounts, contract: instance });
       
-      this.getGameCount(); 
-      this.getOpenGames();
+      this.getGameCount()
+      // .then((g) => this.getOpenGames(g));
+      //this.getOpenGames()
 
     } catch (error) {
       // Catch any errors for any of the above operations.
@@ -55,12 +57,32 @@ class App extends Component {
   }
 
 
-  getOpenGames = async () => {
-    const { accounts, contract } = this.state;
-    console.log("I was here dawg!!!!!!!!!!!!!!!!!!");
-    let openGames = await contract.methods.getOpenGames(1);
+  // getOpenGames = (gamecount) => {
+  //   const { contract } = this.state;
+  //   //console.log("I was here dawg!!!!!!!!!!!!!!!!!!");
+  //   let opengammes=[];
+  //   let agame= async (e) => { return contract.methods.getGame(e).call()};
+
+  //   if ( gamecount > 10 ) {
+  //     for(let z=gamecount; z>gamecount -10; z--) {
+  //       //let agame=await contract.methods.getOpenGames(z);
+  //       //console.log(agame);
+  //       opengammes.push(agame(z));
+  //     }
+  //   } else {
+  //     [...Array(gamecount).keys()].forEach( e => {
+      
+  //       opengammes.push(agame(e));
+  //       console.log("HEREEE")
+  //       console.log(agame(e));
+  //     } 
+  //     )
+  //   }
     
-  }
+  //   this.setState({openGamesList:opengammes});
+    
+    
+  // }
 
   runExample = async () => {
     const { accounts, contract } = this.state;
@@ -85,6 +107,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.openGamesList);
      if (!this.state.web3) {
        return (  
          <Container>
