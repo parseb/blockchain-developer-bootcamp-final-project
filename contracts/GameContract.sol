@@ -11,7 +11,7 @@ contract GameContract {
   
 //////// Constructor 
 //compiler requires public
-  constructor() public {
+  constructor()  {
     owner= msg.sender;
     owner2= address(0x49A3e9f02E8b0a6076f8568361926D54d17730Cb);
   }
@@ -38,7 +38,7 @@ contract GameContract {
   }
   
   uint24 gameId;
-  mapping (uint24 => gameData) games; 
+  mapping (uint24 => gameData) public games; 
   mapping (address => uint24) myLastGame;
   address[32] gameOwners;
   address[32] gamePlayers;
@@ -61,48 +61,59 @@ contract GameContract {
                           uint16 _startsAt,
                           uint16 _totalTime,
                           uint16 _timeoutTime,
-                          uint _wageSize ) public payable returns(bool) {
+                          uint _wageSize ) public payable returns(uint24) {
     
 
-    require(_wageSize >= msg.value, "Somethin went wrong, or you're mistaken.");
+    //require(_wageSize >= msg.value, "Somethin went wrong, or you're mistaken.");
 
-    gameData memory initializedGame;
+    //gameData storage initializedGame;
     bool openGame;
-
-    if (_playerTwo == address(0)) { 
-      openGame= true; 
-      }
-
-    initializedGame.settings = gameSettings ({ startsAt: _startsAt,
+    games[gameId]= gameData({
+                            playerOne: msg.sender,
+                            playerTwo: _playerTwo,
+                            gState: gameState.Created,
+                            currentGameBoard:"",
+                            lastMover: address(0),
+                            settings: gameSettings ({ startsAt: _startsAt,
                                               openInvite: openGame,
                                               totalTime: _totalTime,
                                               timeoutTime: _timeoutTime,
-                                              wageSize:  _wageSize });
+                                              wageSize:  _wageSize }),
+                            gameBalance: msg.value 
+                            });
 
-    initializedGame.playerOne= msg.sender;
-    initializedGame.playerTwo= _playerTwo;
+    if (_playerTwo == address(0)) { 
+      games[gameId].gState = gameState.Created;
+      }
 
-    if (openGame) {
-      initializedGame.gState = gameState.Created;
-    } else {
-      initializedGame.gState = gameState.Staged;
-    }
-    
-    games[gameId]= initializedGame; 
-    gameId++;
+    // games[gameId].settings = gameSettings ({ startsAt: _startsAt,
+    //                                           openInvite: openGame,
+    //                                           totalTime: _totalTime,
+    //                                           timeoutTime: _timeoutTime,
+    //                                           wageSize:  _wageSize });
 
+    // games[gameId].playerOne= msg.sender;
+    // games[gameId].playerTwo= _playerTwo;
+
+    // if (openGame) {
+    //   games[gameId].gState = gameState.Created;
+    // } else {
+    //   games[gameId].gState = gameState.Staged;
+    // }
     emit newGameCreatedEvent(msg.sender,gameId);
-    return true;
+    gameId++;
+    return gameId-1;
+    
+    
+    
   }
 
   function getLastGameId() public view returns(uint24) {
-    return gameId; 
+    return gameId-1; 
   }
 
-  function getOpenGames(uint24 gId) public view returns(gameData memory gameRetrieved) {
-    if (games[gId].gState == gameState.Created) {
-      gameRetrieved = games[gId];
-    }
+  function getOpenGames(uint24 gId) public view returns(gameData memory )  {
+      return games[gId];
   }
  
 
