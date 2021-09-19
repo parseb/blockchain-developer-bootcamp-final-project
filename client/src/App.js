@@ -7,6 +7,7 @@ import HomePage from "./components/HomePage";
 import "./App.css";
 import { Container, Row, Spinner }  from 'react-bootstrap';
 import GameContract from "./contracts/GameContract.json";
+import CreateNew from "./components/CreateNewGame";
 
 class App extends Component {
   state = { 
@@ -14,7 +15,8 @@ class App extends Component {
              accounts: null, 
              contract: null,
              gamesTotalCount: 0,
-             openGamesList: [] };
+             openGamesList: [],
+             currentGame: {} }
 
   componentDidMount = async () => {
     try {
@@ -37,7 +39,9 @@ class App extends Component {
       // example of interacting with the contract's methods.
       this.setState({ web3, accounts, contract: instance });
       
-      this.getGameCount()
+      this.getGameCount();
+      
+      this.checkAndReturnCurrentGame();
       // .then((g) => this.getOpenGames(g));
       //this.getOpenGames()
 
@@ -49,13 +53,29 @@ class App extends Component {
       console.error(error);
     }
   };
-
+  ///foo.call.value("ETH_TO_BE_SENT")("ADDITIONAL_DATA")
   getGameCount = async () => {
     const { accounts, contract } = this.state;
     let count = await contract.methods.getLastGameId().call();
     this.setState({gamesTotalCount: count});
   }
 
+  checkAndReturnCurrentGame = async () => {
+    let currentgame = await this.state.contract.methods.checkAndReturnCurrentGame().call();
+    this.setState({ currentGame: currentgame });
+    console.log(currentgame); ////
+    //this.render()
+  }
+
+  sendCreateGame = async () => {
+
+  }
+
+  playerisReady = async () => {
+
+  }
+
+  
 
   // getOpenGames = (gamecount) => {
   //   const { contract } = this.state;
@@ -84,20 +104,20 @@ class App extends Component {
     
   // }
 
-  runExample = async () => {
-    const { accounts, contract } = this.state;
+  // runExample = async () => {
+  //   const { accounts, contract } = this.state;
 
-    // Stores a given value, 5 by default.
-    await contract.methods.set(5).send({ from: accounts[0] });
+  //   // Stores a given value, 5 by default.
+  //   await contract.methods.set(5).send({ from: accounts[0] });
 
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
+  //   // Get the value from the contract to prove it worked.
+  //   const response = await contract.methods.get().call();
 
 
 
-    // Update state with the result.
-    this.setState({ storageValue: response });
-  };
+  //   // Update state with the result.
+  //   this.setState({ storageValue: response });
+  // };
 
   initializeGame = async () => {
     const { accounts, contract } = this.state;
@@ -130,20 +150,13 @@ class App extends Component {
     return (
       <Container>
         <div className="App">
-          <h6> {this.state.gamesTotalCount} </h6>
-        <HomePage />
-        {/* <h1>Good to Go!</h1>
-        <p>Your Truffle Box is installed and ready.</p>
-        <h2>Smart Contract Example</h2>
-        <p>
-          If your contracts compiled and migrated successfully, below will show
-          a stored value of 5 (by default).
-        </p>
-        <p>
-          Try changing the value stored on <strong>line 42</strong> of App.js.
-        </p>
-        <div>The stored value is: {this.state.storageValue}</div> */}
-      </div>
+          <div className="Title" style={{padding:20}}>
+                      <h2 style={{margin2Top: 20}}> Chess Wager</h2>
+          </div>
+          <hr />
+          <CreateNew />
+          <HomePage state={this.state} />
+        </div>
       </Container>
       
     );
