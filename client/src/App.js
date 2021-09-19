@@ -154,7 +154,11 @@ class App extends Component {
                       <h2 style={{margin2Top: 20}}> Chess Wager</h2>
           </div>
           <hr />
-          <CreateNew />
+       
+             <CreateNew blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
+      
+         
+          {/* get user account accounts[0] might return wrong one --check @#TODO */}
           <HomePage state={this.state} />
         </div>
       </Container>
