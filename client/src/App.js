@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import getWeb3 from "./getWeb3";
 
 import HomePage from "./components/HomePage";
+import Title from  "./components/Title";
 
 import "./App.css";
 import { Container, Row, Spinner, Col }  from 'react-bootstrap';
@@ -16,7 +17,12 @@ class App extends Component {
              contract: null,
              gamesTotalCount: 0,
              openGamesList: [],
-             currentGame: {} }
+             currentGame: {},
+             cPlayer2Address:'',
+             cPlayer1Address:'',
+             cGamePerTime:0,
+             cWagerAmount:0  
+            }
 
   componentDidMount = async () => {
     try {
@@ -74,6 +80,8 @@ class App extends Component {
   playerisReady = async () => {
 
   }
+
+  
 
   
 

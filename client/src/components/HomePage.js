@@ -25,9 +25,9 @@ export default class HomePage extends Component {
                             The aim here is to experiment with in-game time and material advantage
                             as determinants of a continously enacted win/loss ratio.   
                             </p> 
-                            <p>
+                            
                             <h6> Total games played: {this.props.state.gamesTotalCount} </h6>
-                            </p>
+                            
                             <hr />
                         </Card.Body>                     
                     </Card>
