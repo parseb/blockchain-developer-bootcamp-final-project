@@ -5,7 +5,7 @@ import getWeb3 from "./getWeb3";
 import HomePage from "./components/HomePage";
 
 import "./App.css";
-import { Container, Row, Spinner }  from 'react-bootstrap';
+import { Container, Row, Spinner, Col }  from 'react-bootstrap';
 import GameContract from "./contracts/GameContract.json";
 import CreateNew from "./components/CreateNewGame";
 
@@ -148,11 +148,22 @@ class App extends Component {
      }
 
     return (
-      <Container>
+      
         <div className="App">
-          <div className="Title" style={{padding:20}}>
-                      <h2 style={{margin2Top: 20}}> Chess Wager</h2>
+          <Container>
+          <Col></Col>
+          <Col>
+          <div className="Title" style={{padding:20, fontFamily: 'monospace'}}>
+          
+            <Row><h3>♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ </h3></Row>
+            <Row><h3>♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙</h3></Row>
+            <Row><h1> Chess Wager </h1></Row>
+            <Row><h3>♟︎ ♟︎ ♟︎ ♟︎ ♟︎ ♟︎ ♟︎ ♟︎</h3></Row>
+            <Row><h3>♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜</h3></Row>
+            
           </div>
+          </Col>
+          <Col></Col>
           <hr />
        
              <CreateNew blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
@@ -160,8 +171,9 @@ class App extends Component {
          
           {/* get user account accounts[0] might return wrong one --check @#TODO */}
           <HomePage state={this.state} />
+          </Container>
         </div>
-      </Container>
+      
       
     );
   }

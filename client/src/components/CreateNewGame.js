@@ -15,7 +15,7 @@ export default class CreateNew extends Component {
                         <Col></Col>
                         <Col>
                     <h3> Create New Game</h3>
-                        <Form>
+                        <Form style={{ width: '500px' }}>
                         <Form.Group className="mb-3" controlId="player1Address">
                             <Form.Label>Player 1</Form.Label>
                             <Form.Control type="text readonly" value={this.props.userAddress} readOnly />
@@ -34,6 +34,14 @@ export default class CreateNew extends Component {
                             <Form.Label>Minutes Per Player </Form.Label>
                             {/* <Form.Range type="number" placeholder="5" /> */}
                             <Form.Control type="number" defaultValue="5" min="5" max="30" />
+                            <Form.Text className="text-muted">
+                                Minutes per player between (min. 5 max. 30 )
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="wagerAmount">
+                            <Form.Label>Wage Amount</Form.Label>
+                            {/* <Form.Range type="number" placeholder="5" /> */}
+                            <Form.Control type="number" defaultValue="0.01" min="0.01" max="10" />
                             <Form.Text className="text-muted">
                                 Minutes per player between (min. 5 max. 30 )
                             </Form.Text>

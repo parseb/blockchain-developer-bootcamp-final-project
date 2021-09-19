@@ -12,33 +12,29 @@ export default class HomePage extends Component {
        
         return (
             <Container>
-                
-                
                 <Row> 
-                
+                    <hr />
+                    <Col></Col>
+                    <Col>
+                <Navbar float="bottom" >
+                    <Card>
+                        <Card.Title>?</Card.Title>
+                        <Card.Body >
+                            <p> 
+                            Chess Wager is first of all an experiement in tweeking Chess gameplay. 
+                            The aim here is to experiment with in-game time and material advantage
+                            as determinants of a continously enacted win/loss ratio.   
+                            </p> 
+                            <p>
+                            <h6> Total games played: {this.props.state.gamesTotalCount} </h6>
+                            </p>
+                            <hr />
+                        </Card.Body>                     
+                    </Card>
+                </Navbar>
+                    </Col>
+                    <Col></Col>
                 </Row>
-                
-                
-                
-            
-
-                <Navbar fixed="bottom" >
- 
-                <Card>
-                    <Card.Title>?</Card.Title>
-                    <Card.Body >
-                        <p className="text-justify"> 
-                        Chess Wager is first of all an experiement in tweeking Chess gameplay. 
-                        The aim here is to experiment with in-game time and material advantage
-                         as determinants of a continously enacted win/loss ratio.   
-                        </p> 
-                        <p>
-                        <h6> Total games played: {this.props.state.gamesTotalCount} </h6>
-                        </p>
-                        <hr />
-                    </Card.Body>                     
-                </Card>
-            </Navbar>
             </Container> 
         ); 
         
