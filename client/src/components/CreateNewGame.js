@@ -6,34 +6,50 @@ export default class CreateNew extends Component {
       constructor(props) {
 		super(props)
 		this.state = {
-            wageSize:0.1,
-            WagerAmount:0.1,
+            WagerAmount:111111,
             Player2Address:0,
             Player1Address:this.props.userAddress,
             GamePerTime:0
 		}
+
        
 	}
 
+   createGame= async (e) => {
+       console.log(this.state)
+       console.log(e)
+     this.props.sendCreateGame(this.state);
+   }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
+  handleSubmit = async (e) => {
+    //   this.preventDefault();
+   const contract = this.props.contract;
+   let create = await contract.methods.initializeGame(
+       this.state.Player2Address,
+       "0",
+       this.state.GamePerTime,
+       "0",
+       this.state.WagerAmount
+   ).send({ from: this.props.userAddress, value:this.state.WagerAmount })
+   .then(console.log(create))
+   
+
+
   }
     
   handleWageChange = (e) => {
     this.setState({WagerAmount: e.target.value})
-    console.log(this.state);
+    
   }
 
   handlePlayer2Change = (e) => {
     this.setState({Player2Address: e.target.value})
-    console.log(this.state);
+    
   }
 
   handleGamePerTimeChange = (e) => {
     this.setState({GamePerTime: e.target.value})
-    console.log(this.state);
+    
   }
 
     
@@ -72,16 +88,15 @@ export default class CreateNew extends Component {
                         <Form.Group className="mb-3" controlId="WagerAmount">
                             <Form.Label>Wage Amount</Form.Label>
                             {/* <Form.Range type="number" placeholder="5" /> */}
-                            <Form.Control type="number" step="0.01" defaultValue="0.01" min="0.01" max="306" onChange={this.handleWageChange}  />
+                            <Form.Control type="number" step="100000" defaultValue="1000000" min="1000" max="3060000000000000000000000" onChange={this.handleWageChange}  />
                             <Form.Text className="text-muted">
                                 Minutes per player between (min. 5 max. 30 )
                             </Form.Text>
                         </Form.Group>
-                        <Form.Group> 
-                            <Button variant="outline-dark"  onClick={this.handleNewGameSubmit()}>
+                        
+                            <Button variant="outline-dark"  onClick={this.createGame}>
                                 Create Game
                             </Button>
-                        </Form.Group>
                         
                         </Form>
                         </Col>
