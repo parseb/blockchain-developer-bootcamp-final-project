@@ -18,10 +18,7 @@ class App extends Component {
              gamesTotalCount: 0,
              openGamesList: [],
              currentGame: {},
-             cPlayer2Address:'',
-             cPlayer1Address:'',
-             cGamePerTime:0,
-             cWagerAmount:0  
+             
             }
 
   componentDidMount = async () => {
@@ -73,59 +70,18 @@ class App extends Component {
     //this.render()
   }
 
-  sendCreateGame = async () => {
-
+  sendCreateGame = async (s) => {
+    console.log(s);
+    const { accounts, contract, web3js } = this.state;
+    console.log("ssssssssssss")
+    console.log(s.player2Address);
+    let createCall= await contract.methods.initializeGame(s.Player2Address,0,s.GamePerTime,"0",s.WagerAmount)
+    .send({ from: accounts[0], value: s.WagerAmount })
   }
 
   playerisReady = async () => {
 
   }
-
-  
-
-  
-
-  // getOpenGames = (gamecount) => {
-  //   const { contract } = this.state;
-  //   //console.log("I was here dawg!!!!!!!!!!!!!!!!!!");
-  //   let opengammes=[];
-  //   let agame= async (e) => { return contract.methods.getGame(e).call()};
-
-  //   if ( gamecount > 10 ) {
-  //     for(let z=gamecount; z>gamecount -10; z--) {
-  //       //let agame=await contract.methods.getOpenGames(z);
-  //       //console.log(agame);
-  //       opengammes.push(agame(z));
-  //     }
-  //   } else {
-  //     [...Array(gamecount).keys()].forEach( e => {
-      
-  //       opengammes.push(agame(e));
-  //       console.log("HEREEE")
-  //       console.log(agame(e));
-  //     } 
-  //     )
-  //   }
-    
-  //   this.setState({openGamesList:opengammes});
-    
-    
-  // }
-
-  // runExample = async () => {
-  //   const { accounts, contract } = this.state;
-
-  //   // Stores a given value, 5 by default.
-  //   await contract.methods.set(5).send({ from: accounts[0] });
-
-  //   // Get the value from the contract to prove it worked.
-  //   const response = await contract.methods.get().call();
-
-
-
-  //   // Update state with the result.
-  //   this.setState({ storageValue: response });
-  // };
 
   initializeGame = async () => {
     const { accounts, contract } = this.state;
@@ -174,15 +130,13 @@ class App extends Component {
           <Col></Col>
           <hr />
        
-             <CreateNew sendCreateGame={this.sendCreateGame} blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
+             <CreateNew contract={this.state.contract} sendCreateGame={this.sendCreateGame} blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
       
          
           {/* get user account accounts[0] might return wrong one --check @#TODO */}
           <HomePage state={this.state} />
           </Container>
         </div>
-      
-      
     );
   }
 }
