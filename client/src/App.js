@@ -174,7 +174,7 @@ class App extends Component {
           <Col></Col>
           <hr />
        
-             <CreateNew blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
+             <CreateNew sendCreateGame={this.sendCreateGame} blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
       
          
           {/* get user account accounts[0] might return wrong one --check @#TODO */}
