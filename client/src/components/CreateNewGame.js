@@ -1,5 +1,7 @@
+import { Chess } from "chess.js";
 import  React, {Component, useState } from "react";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import ChessBoard2 from "./ChessBoard";
 
 export default class CreateNew extends Component {
  
@@ -107,7 +109,9 @@ export default class CreateNew extends Component {
                 
                 )
         } else {
-           return( <h6> Game in Progress</h6> )
+           return( 
+               <ChessBoard2 />
+            )
         }
         
     }

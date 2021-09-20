@@ -25,6 +25,7 @@ export default function ChessBoard2() {
 //   }
 
   function onDrop(sourceSquare, targetSquare) {
+    console.log(sourceSquare, targetSquare, game.fen())
     let move = null;
     safeGameMutate((game) => {
       move = game.move({
