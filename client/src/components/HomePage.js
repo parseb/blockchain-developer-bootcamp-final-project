@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 //import { Chessboard } from 'react-chessboard';
 import { Container, Row, Button, Card, Col, Navbar  } from 'react-bootstrap';
-import ChessBoard2 from "./ChessBoard";
-import { gameList } from "./gameJoinComponent";
+
 
 
 export default class HomePage extends Component {

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import  Chess  from 'chess.js';
 //const { Chess } = require('./chess.js')
 import { Chessboard } from 'react-chessboard';
+import { Col, Container, Row } from 'react-bootstrap';
 
 export default function ChessBoard2() {
   const [game, setGame] = useState(new Chess());
@@ -38,5 +39,17 @@ export default function ChessBoard2() {
     //setTimeout(makeRandomMove, 200);
   }
 
-  return <Chessboard position={game.fen()} onPieceDrop={onDrop} />;
+  return ( 
+  <Container> 
+    <Row>
+    <Col xs lg="8">
+    <Chessboard position={game.fen()} onPieceDrop={onDrop} /> 
+    </Col>
+    <Col xs lg="4">
+      
+    </Col>
+    </Row>
+    <br />
+  </Container>
+  )
 }

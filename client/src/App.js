@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import getWeb3 from "./getWeb3";
 
 import HomePage from "./components/HomePage";
-import Title from  "./components/Title";
+import ChessTitle from  "./components/ChessTitle";
 
 import "./App.css";
 import { Container, Row, Spinner, Col }  from 'react-bootstrap';
@@ -92,6 +92,11 @@ class App extends Component {
 
   render() {
     console.log(this.state.openGamesList);
+
+    const createGame= () => {
+      if(this.state.currentGame.gState == "0"){}
+    }
+
      if (!this.state.web3) {
        return (  
          <Container>
@@ -115,21 +120,8 @@ class App extends Component {
       
         <div className="App">
           <Container>
-          <Col></Col>
-          <Col>
-          <div className="Title" style={{padding:20, fontFamily: 'monospace'}}>
-          
-            <Row><h3>♖ ♘ ♗ ♕ ♔ ♗ ♘ ♖ </h3></Row>
-            <Row><h3>♙ ♙ ♙ ♙ ♙ ♙ ♙ ♙</h3></Row>
-            <Row><h1> Chess Wager </h1></Row>
-            <Row><h3>♟︎ ♟︎ ♟︎ ♟︎ ♟︎ ♟︎ ♟︎ ♟︎</h3></Row>
-            <Row><h3>♜ ♞ ♝ ♛ ♚ ♝ ♞ ♜</h3></Row>
+          <ChessTitle />
             
-          </div>
-          </Col>
-          <Col></Col>
-          <hr />
-       
              <CreateNew contract={this.state.contract} sendCreateGame={this.sendCreateGame} blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
       
          
