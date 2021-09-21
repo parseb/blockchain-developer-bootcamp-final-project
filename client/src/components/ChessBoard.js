@@ -8,6 +8,8 @@ import { Col, Container, Row } from 'react-bootstrap';
 export default function ChessBoard2(state, user) {
   const [game, setGame] = useState(new Chess());
 
+  
+
   function safeGameMutate(modify) {
     setGame((g) => {
       const update = { ...g };
@@ -28,6 +30,7 @@ export default function ChessBoard2(state, user) {
 
   function onDrop(sourceSquare, targetSquare) {
     console.log(sourceSquare, targetSquare, game.fen())
+
     let move = null;
     safeGameMutate((game) => {
       move = game.move({

@@ -23,7 +23,6 @@ contract GameContract {
   }
 /////// Constructor END
   
-  //enum gameState {NoAssignedState, Created, InProgress, Ended, Staged, Open }
   enum gameState {NoAssignedState, Staged, InProgress, Ended, Rejected }
   
   struct gameSettings {
@@ -38,19 +37,19 @@ contract GameContract {
     address playerOne;
     address playerTwo;
     gameState gState;
-    bytes32 currentGameBoard;
+    bytes currentGameBoard;
     address lastMover;
     gameSettings settings;
-    uint gameBalance; 
+    uint gameBalance;
+    bool player2accepted; 
   }
-  
   
   mapping (uint24 => gameData) public games; 
   mapping (address => uint24) myLastGame;
   address[32] gameOwners;
   address[32] gamePlayers;
 
-  event newGameCreatedEvent(address indexed _playerOne, uint24 indexed _gameId);
+  event newGameCreatedEvent(address indexed _playerOne, address indexed _playerTwo);
 
 ////// Modifiers Start 
   modifier isOwner() {
@@ -58,35 +57,32 @@ contract GameContract {
     _; 
   }
 
+  function onMoveStateCheck(uint24 _gameid ) internal view returns(bool) {
+    //do not need it, do I?
+    gameData memory game=games[_gameid];
+    bool g= (  game.gState == gameState.InProgress || game.gState == gameState.Staged  );
+    bool notLastMover = msg.sender != game.lastMover; 
+    require( g && notLastMover , "Game State: Unavailable." );
+    return true;
+  }
+
   function noOtherGameOnCreate(address player1) internal view returns(bool) {
     gameData memory lastPlayer1Game = games[myLastGame[player1]]; 
-    //gameData memory lastPlayer2Game = games[myLastGame[player2]];
 
     if( (lastPlayer1Game.gState == gameState.Ended) || (lastPlayer1Game.gState == gameState.NoAssignedState) ){
       return true;
     } else {
       return false;
     }
-    //require( (lastPlayer2Game.gState == gameState.Ended) || (lastPlayer2Game.gState == gameState.NoAssignedState), "Player 2 has game in progress." ); 
   }
-  
-
 ////// Modifiers END
-
-
   function initializeGame(address _playerTwo,
                           uint16 _startsAt,
                           uint16 _totalTime,
                           uint16 _timeoutTime,
                           uint _wageSize ) public payable returns(uint24 justCreatedGameId) {
-    
-
-    //require(_wageSize >= msg.value, "Somethin went wrong, or you're mistaken.");
-
-    //gameData storage initializedGame;
     bool openGame;
   
-
     games[gameId]= gameData({
                             playerOne: msg.sender,
                             playerTwo: _playerTwo,
@@ -98,37 +94,17 @@ contract GameContract {
                                               totalTime: _totalTime,
                                               timeoutTime: _timeoutTime,
                                               wageSize:  _wageSize }),
-                            gameBalance: msg.value 
+                            gameBalance: msg.value,
+                            player2accepted: false 
                             });
 
     require((noOtherGameOnCreate(msg.sender) && noOtherGameOnCreate(_playerTwo)), "One of the players has a game in progress.");
-
-    // if (! (_playerTwo == address(0)) ) { 
-    //   games[gameId].gState = gameState.Staged;
-       
-    //   } 
-
     myLastGame[msg.sender]= gameId;
     myLastGame[_playerTwo]= gameId;
     
-
-    // games[gameId].settings = gameSettings ({ startsAt: _startsAt,
-    //                                           openInvite: openGame,
-    //                                           totalTime: _totalTime,
-    //                                           timeoutTime: _timeoutTime,
-    //                                           wageSize:  _wageSize });
-
-    // games[gameId].playerOne= msg.sender;
-    // games[gameId].playerTwo= _playerTwo;
-
-    // if (openGame) {
-    //   games[gameId].gState = gameState.Created;
-    // } else {
-    //   games[gameId].gState = gameState.Staged;
-    // }
     justCreatedGameId = gameId;
     
-    emit newGameCreatedEvent(msg.sender,gameId);
+    emit newGameCreatedEvent(msg.sender,_playerTwo);
     gameId++;
 
     return gameId;
@@ -144,17 +120,49 @@ contract GameContract {
  
   function checkAndReturnCurrentGame() public view returns (gameData memory game) {
     if ( noOtherGameOnCreate(msg.sender)) {
-      return game;
+      return games[0];  //////??? why 
     } else {
       game= games[myLastGame[msg.sender]];
       return game;
     }
-    
   }
-
   
+  event player2Accepted(address indexed _player1, address indexed _player2, bool _accepted);
+  
+  function playerTwoAccepted(bool _accepted) public payable  {
+    if (! _accepted) {
+      gameData storage game =  games[myLastGame[msg.sender]];
+      game.player2accepted = false;
+      game.gState = gameState.Rejected;
+      //or cancel? w\ no refund?
+      myLastGame[game.playerOne]= 0;
+      myLastGame[game.playerTwo]= 0;
+      //uint tenpercent = 
+      myLastGame[msg.sender] = 0; 
+      //(bool success,) = msg.sender.call.value(//%palyer1deposit/gascost)()
+      //norefund for now.
+      emit player2Accepted(game.playerOne, game.playerTwo, false);
+    } else {
+      gameData storage game = games[myLastGame[msg.sender]];
+      game.player2accepted = true;
+      game.gState = gameState.Staged;
+      emit player2Accepted(game.playerOne, game.playerTwo, true);
+    }
+  }
+  
+  
+  
+  event newMoveInGame(address indexed _submittedby, string indexed _prevState, string _nextState);
 
-
-
-
+  function submitMove(string memory _submittedMove) public {
+    bytes memory submitted = bytes(_submittedMove);
+    gameData storage game= games[myLastGame[msg.sender]]; 
+    string memory prevState= string(game.currentGameBoard);
+    if(onMoveStateCheck(myLastGame[msg.sender])) {
+      game.lastMover= msg.sender;
+      game.currentGameBoard = submitted; 
+    }
+    
+    emit newMoveInGame( msg.sender, prevState, _submittedMove);
+  } 
 }

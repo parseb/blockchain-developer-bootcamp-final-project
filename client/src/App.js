@@ -134,7 +134,7 @@ class App extends Component {
               {createGame()}
               {this.state.currentGame[1]}
             </Col>           
-            <Col>
+            <Col xs lg="4">
 
             </Col> 
           </Row>
