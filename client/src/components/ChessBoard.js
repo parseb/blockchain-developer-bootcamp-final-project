@@ -5,7 +5,7 @@ import  Chess  from 'chess.js';
 import { Chessboard } from 'react-chessboard';
 import { Col, Container, Row } from 'react-bootstrap';
 
-export default function ChessBoard2() {
+export default function ChessBoard2(state, user) {
   const [game, setGame] = useState(new Chess());
 
   function safeGameMutate(modify) {
@@ -16,9 +16,10 @@ export default function ChessBoard2() {
     });
   }
 
+
 //   function makeRandomMove() {
 //     const possibleMoves = game.moves();
-//     if (game.game_over() || game.in_draw() || possibleMoves.length === 0) return; // exit if the game is over
+//     if (game.game_over() || game.in_draw() || possibleMoves.length === 0) return; // @@@@XXXX@!checkmate draw PossibleMoves.length
 //     const randomIndex = Math.floor(Math.random() * possibleMoves.length);
 //     safeGameMutate((game) => {
 //       game.move(possibleMoves[randomIndex]);
@@ -39,17 +40,12 @@ export default function ChessBoard2() {
     //setTimeout(makeRandomMove, 200);
   }
 
-  return ( 
-  <Container> 
-    <Row>
-    <Col xs lg="8">
-    <Chessboard position={game.fen()} onPieceDrop={onDrop} /> 
-    </Col>
-    <Col xs lg="4">
-      
-    </Col>
-    </Row>
-    <br />
-  </Container>
+  return (
+    <div>
+      <br />
+        <Chessboard position={game.fen()} onPieceDrop={onDrop} /> 
+      <br />
+    </div> 
+    
   )
 }

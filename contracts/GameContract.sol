@@ -24,7 +24,7 @@ contract GameContract {
 /////// Constructor END
   
   //enum gameState {NoAssignedState, Created, InProgress, Ended, Staged, Open }
-  enum gameState {NoAssignedState, Staged, InProgress, Ended }
+  enum gameState {NoAssignedState, Staged, InProgress, Ended, Rejected }
   
   struct gameSettings {
     uint16 startsAt;

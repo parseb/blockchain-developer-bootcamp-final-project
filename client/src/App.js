@@ -2,13 +2,15 @@ import React, { Component } from "react";
 //import SimpleStorageContract from "./contracts/SimpleStorage.json";
 import getWeb3 from "./getWeb3";
 
-import HomePage from "./components/HomePage";
+import HomeFooter from "./components/HomeFooter";
 import ChessTitle from  "./components/ChessTitle";
 
 import "./App.css";
 import { Container, Row, Spinner, Col }  from 'react-bootstrap';
 import GameContract from "./contracts/GameContract.json";
 import CreateNew from "./components/CreateNewGame";
+import ChessBoard2 from "./components/ChessBoard";
+
 
 class App extends Component {
   state = { 
@@ -66,15 +68,15 @@ class App extends Component {
   checkAndReturnCurrentGame = async () => {
     let currentgame = await this.state.contract.methods.checkAndReturnCurrentGame().call();
     this.setState({ currentGame: currentgame });
-    console.log(currentgame); ////
+    //console.log(currentgame); ////
     //this.render()
   }
 
   sendCreateGame = async (s) => {
-    console.log(s);
+    //console.log(s);
     const { accounts, contract, web3js } = this.state;
-    console.log("ssssssssssss")
-    console.log(s.player2Address);
+    //console.log("ssssssssssss")
+    //console.log(s.player2Address);
     let createCall= await contract.methods.initializeGame(s.Player2Address,0,s.GamePerTime,"0",s.WagerAmount)
     .send({ from: accounts[0], value: s.WagerAmount })
   }
@@ -93,8 +95,13 @@ class App extends Component {
   render() {
     console.log(this.state.openGamesList);
 
-    const createGame= () => {
-      if(this.state.currentGame.gState == "0"){}
+    let createGame= () => {
+      let gstate= this.state.currentGame.gState
+      if(gstate == "0" || gstate == "4" ){
+        return  <CreateNew contract={this.state.contract} sendCreateGame={this.sendCreateGame} blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
+      } else {
+        return <ChessBoard2 state={this.state} user={this.state.accounts[0]} />
+      }
     }
 
      if (!this.state.web3) {
@@ -121,12 +128,18 @@ class App extends Component {
         <div className="App">
           <Container>
           <ChessTitle />
-            
-             <CreateNew contract={this.state.contract} sendCreateGame={this.sendCreateGame} blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
-      
-         
+          <Row> 
+            <Col xs lg="8">
+              {this.state.currentGame[0]}
+              {createGame()}
+              {this.state.currentGame[1]}
+            </Col>           
+            <Col>
+
+            </Col> 
+          </Row>
           {/* get user account accounts[0] might return wrong one --check @#TODO */}
-          <HomePage state={this.state} />
+          <HomeFooter state={this.state} />
           </Container>
         </div>
     );

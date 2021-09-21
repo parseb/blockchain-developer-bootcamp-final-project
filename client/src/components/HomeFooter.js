@@ -4,7 +4,7 @@ import { Container, Row, Button, Card, Col, Navbar  } from 'react-bootstrap';
 
 
 
-export default class HomePage extends Component {
+export default class HomeFooter extends Component {
 
 
     render() {
