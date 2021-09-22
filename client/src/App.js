@@ -87,11 +87,18 @@ class App extends Component {
   acceptGameInvite= async () =>{
     console.log("clicked Accepted")
     const { accounts, contract, web3js } = this.state;
-    let createCall= await contract.methods.playerTwoAccepted(true);
-    createCall.send({from: accounts[0], value: this.state.currentGame.settings.wageSize});
+    let createCall= await contract.methods.playerTwoAccepted(true)
+    .send({from: accounts[0], value: this.state.currentGame.settings.wageSize});
 
   }
 
+  declineGameInvite= async () =>{
+    console.log("clicked Accepted")
+    const { accounts, contract, web3js } = this.state;
+    let createCall= await contract.methods.playerTwoAccepted(false)
+    .send({from: accounts[0], value: 0});
+
+  }
 
   // initializeGame = async () => {
   //   const { accounts, contract } = this.state;
@@ -118,9 +125,23 @@ class App extends Component {
         return  ( <h6> Invite Accepted: {String(this.state.currentGame.player2accepted)} </h6>)
       } else if (this.state.currentGame[1] == this.state.accounts[0]) {
         return(
-        <Button variant="outline-danger"  onClick={this.acceptGameInvite}>
-          Accept Game {this.state.currentGame.settings.wageSize}
-        </Button>
+      <Col>
+        <Row> 
+            <Col>
+              <Button variant="outline-success"  onClick={this.acceptGameInvite}>
+                Accept Game {this.state.currentGame.settings.wageSize}
+              </Button>
+            </Col>
+            <Col>
+              <Button variant="outline-danger"  onClick={this.declineGameInvite}>
+                Decline Game
+              </Button>
+            </Col>
+        </Row>
+        <Row>
+          [Player 2 Response Timeout: 10 minutes] 
+        </Row>
+      </Col>
         )
       }
     }
