@@ -589,12 +589,12 @@
     "1337": {
       "events": {},
       "links": {},
-      "address": "0xf5C482eCf3C174Edd50c559DFe080997a1CaC015",
-      "transactionHash": "0x50ed6b10b6d45525aa1ddebbd6caf17c1d1c47c17fb65f1a59820eabc42caa6f"
+      "address": "0x3A7A333Ad58de24eE70604c7F7955bB24dCb70f4",
+      "transactionHash": "0x86f19982d5afc8985148890396bff48059ab7d305f957bec16366fc51ae79b8b"
     }
   },
   "schemaVersion": "3.4.3",
-  "updatedAt": "2021-09-22T16:22:01.418Z",
+  "updatedAt": "2021-09-22T20:12:05.919Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

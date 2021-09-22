@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import SimpleStorageContract from "./contracts/SimpleStorage.json";
+
 import getWeb3 from "./getWeb3";
 
 import HomeFooter from "./components/HomeFooter";
@@ -20,18 +20,13 @@ class App extends Component {
              gamesTotalCount: 0,
              openGamesList: [],
              currentGame: {},
-             
             }
 
   componentDidMount = async () => {
     try {
-      // Get network provider and web3 instance.
+
       const web3 = await getWeb3();
-
-      // Use web3 to get the user's accounts.
       const accounts = await web3.eth.getAccounts();
-
-      // Get the contract instance.
       const networkId = await web3.eth.net.getId();
 
       const deployedNetwork = GameContract.networks[networkId];
@@ -41,10 +36,7 @@ class App extends Component {
       );
 
       this.setState({ web3, accounts, contract: instance });
-      // Set web3, accounts, and contract to the state, and then proceed with an
-      // example of interacting with the contract's methods.
-      // .then((g) => this.getOpenGames(g));
-      //this.getOpenGames()
+
 
     } catch (error) {
       // Catch any errors for any of the above operations.
@@ -58,8 +50,9 @@ class App extends Component {
       
     this.checkAndReturnCurrentGame();
 
-  };
-  ///foo.call.value("ETH_TO_BE_SENT")("ADDITIONAL_DATA")
+    this.eventListen(); 
+  }
+
   getGameCount = async () => {
     let contract  = this.state.contract;
     let count = await contract.methods.getLastGameId().call();
@@ -71,15 +64,14 @@ class App extends Component {
     const currentgame = await this.state.contract.methods.checkAndReturnCurrentGame().call();
     this.setState({ currentGame: currentgame });
     console.log("this is current game")
-    console.log(currentgame); ////
-    //this.render()
+    console.log(currentgame); 
+   
   }
 
   sendCreateGame = async (s) => {
-    //console.log(s);
+  
     const { accounts, contract, web3js } = this.state;
-    //console.log("ssssssssssss")
-    //console.log(s.player2Address);
+ 
     let createCall= await contract.methods.initializeGame(s.Player2Address,0,s.GamePerTime,"0",s.WagerAmount)
     .send({ from: accounts[0], value: s.WagerAmount })
   }
@@ -100,15 +92,37 @@ class App extends Component {
 
   }
 
-  // initializeGame = async () => {
-  //   const { accounts, contract } = this.state;
-  //   await contract.methods.initializeGame();
-  // }
-
-
-
+  eventListen= async () => {
+    let contract  = await this.state.contract;
+    console.log("CONNNTRRACTT", contract)
+    contract.events.allEvents({
+      // filter: {myIndexedParam: [20,23]}, // Using an array means OR: e.g. 20 or 23
+      // fromBlock: 'latest'
+  }, function(error, event){ 
+    console.log(event);
+  })
+  
+  //this.checkAndReturnCurrentGame();//////////!!!!!!!!!!!!!!!
+  
+  
+  .on("connected", function(subscriptionId){
+      console.log(subscriptionId);
+  })
+  .on('data', function(event){
+      
+      console.log(event); 
+  })
+  .on('changed', function(event){
+      // remove event from local database
+  })
+  .on('error', function(error, receipt) {
+      console.log("Error Event:", error)
+  });
+  
+  };
+  
   render() {
-    //console.log(this.state.openGamesList);
+  
     const gamestates= {0:"Stateless", 1: "Staged", 2:"In Progress", 3: "Ended", 4: "Rejected"}
     const createGame= () => {
       const gstate= this.state.currentGame.gState
