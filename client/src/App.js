@@ -6,7 +6,7 @@ import HomeFooter from "./components/HomeFooter";
 import ChessTitle from  "./components/ChessTitle";
 
 import "./App.css";
-import { Container, Row, Spinner, Col }  from 'react-bootstrap';
+import { Container, Row, Spinner, Col, Button }  from 'react-bootstrap';
 import GameContract from "./contracts/GameContract.json";
 import CreateNew from "./components/CreateNewGame";
 import ChessBoard2 from "./components/ChessBoard";
@@ -84,27 +84,40 @@ class App extends Component {
     .send({ from: accounts[0], value: s.WagerAmount })
   }
 
-  playerisReady = async () => {
-
+  acceptGameInvite= async () =>{
+    console.log("clicked Accepted")
   }
 
-  initializeGame = async () => {
-    const { accounts, contract } = this.state;
-    await contract.methods.initializeGame();
-  }
+
+  // initializeGame = async () => {
+  //   const { accounts, contract } = this.state;
+  //   await contract.methods.initializeGame();
+  // }
 
 
 
   render() {
     //console.log(this.state.openGamesList);
-
+    const gamestates= {0:"Stateless", 1: "Staged", 2:"In Progress", 3: "Ended", 4: "Rejected"}
     const createGame= () => {
       const gstate= this.state.currentGame.gState
-      console.log(gstate, "----gstate")
+      console.log(this.state.currentgame, "----gstate")
       if(gstate == "0" || gstate == "4" ){
         return  <CreateNew contract={this.state.contract} sendCreateGame={this.sendCreateGame} blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
       } else {
         return <ChessBoard2 state={this.state} user={this.state.accounts[0]} />
+      }
+    }
+
+    const acceptGameButton = () => {
+      if (this.state.currentGame[0] == this.state.accounts[0]) {
+        return  ( <h6> Invite Accepted: {String(this.state.currentGame.player2accepted)} </h6>)
+      } else if (this.state.currentGame[1] == this.state.accounts[0]) {
+        return(
+        <Button variant="outline-danger"  onClick={this.acceptGameInvite}>
+          Accept Game {this.state.currentGame.settings.wageSize}
+        </Button>
+        )
       }
     }
 
@@ -139,7 +152,19 @@ class App extends Component {
               {this.state.currentGame[1]}
             </Col>           
             <Col xs lg="4">
-
+              <hr />
+              <Row>
+                <h6> Game State: {gamestates[this.state.currentGame.gState]} </h6>
+              </Row>
+              <hr /> 
+              <Row>
+                {acceptGameButton()}
+              </Row>
+              <hr />
+              <Row></Row>
+              <hr />
+              <Row></Row>
+              <hr />
             </Col> 
           </Row>
           {/* get user account accounts[0] might return wrong one --check @#TODO */}
