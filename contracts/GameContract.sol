@@ -119,13 +119,14 @@ contract GameContract {
   }
  
   function checkAndReturnCurrentGame() public view returns (gameData memory game) {
-    if ( noOtherGameOnCreate(msg.sender)) {
-      return games[0];  //////??? why 
-    } else {
-      game= games[myLastGame[msg.sender]];
-      return game;
-    }
-  }
+    game= games[myLastGame[msg.sender]];
+  //   if ( noOtherGameOnCreate(msg.sender)) {
+  //     return games[0];  //////??? why 
+  //   } else {
+  //     game= games[myLastGame[msg.sender]];
+  //     return game;
+  //   }
+   }
   
   event player2Accepted(address indexed _player1, address indexed _player2, bool _accepted);
   

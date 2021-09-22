@@ -39,14 +39,10 @@ class App extends Component {
         GameContract.abi,
         deployedNetwork && deployedNetwork.address,
       );
-      
+
+      this.setState({ web3, accounts, contract: instance });
       // Set web3, accounts, and contract to the state, and then proceed with an
       // example of interacting with the contract's methods.
-      this.setState({ web3, accounts, contract: instance });
-      
-      this.getGameCount();
-      
-      this.checkAndReturnCurrentGame();
       // .then((g) => this.getOpenGames(g));
       //this.getOpenGames()
 
@@ -57,18 +53,25 @@ class App extends Component {
       );
       console.error(error);
     }
+
+    this.getGameCount();
+      
+    this.checkAndReturnCurrentGame();
+
   };
   ///foo.call.value("ETH_TO_BE_SENT")("ADDITIONAL_DATA")
   getGameCount = async () => {
-    const { accounts, contract } = this.state;
+    let contract  = this.state.contract;
     let count = await contract.methods.getLastGameId().call();
     this.setState({gamesTotalCount: count});
   }
 
   checkAndReturnCurrentGame = async () => {
-    let currentgame = await this.state.contract.methods.checkAndReturnCurrentGame().call();
+    const { accounts, contract, web3js } = this.state;
+    const currentgame = await this.state.contract.methods.checkAndReturnCurrentGame().call();
     this.setState({ currentGame: currentgame });
-    //console.log(currentgame); ////
+    console.log("this is current game")
+    console.log(currentgame); ////
     //this.render()
   }
 
@@ -93,10 +96,11 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.openGamesList);
+    //console.log(this.state.openGamesList);
 
-    let createGame= () => {
-      let gstate= this.state.currentGame.gState
+    const createGame= () => {
+      const gstate= this.state.currentGame.gState
+      console.log(gstate, "----gstate")
       if(gstate == "0" || gstate == "4" ){
         return  <CreateNew contract={this.state.contract} sendCreateGame={this.sendCreateGame} blank={this.state.currentGame} userAddress={this.state.accounts[0]} /> 
       } else {

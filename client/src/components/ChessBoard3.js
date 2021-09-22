@@ -1,16 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { useState } from 'react';
 import  Chess  from 'chess.js';
 //const { Chess } = require('./chess.js')
 import { Chessboard } from 'react-chessboard';
 import { Col, Container, Row } from 'react-bootstrap';
 
-export default function ChessBoard2(stateprop, user) {
-  const [game, setGame] = useState(new Chess());
-
+export default class ChessBoard3 extends Component {
   
+  
+        
+    
+    
+    
+  
+    
 
-  function safeGameMutate(modify) {
+    componentWillMount() {
+        console.log(new Chess())
+        const [game, setGame] = useState(new Chess());
+    }
+
+    safeGameMutate = (modify) => {
     setGame((g) => {
       const update = { ...g };
       modify(update);
@@ -28,7 +38,7 @@ export default function ChessBoard2(stateprop, user) {
 //     });
 //   }
 
-  function onDrop(sourceSquare, targetSquare) {
+  onDrop = (sourceSquare, targetSquare) => {
     console.log(sourceSquare, targetSquare, game.fen())
 
     let move = null;
@@ -43,12 +53,14 @@ export default function ChessBoard2(stateprop, user) {
     //setTimeout(makeRandomMove, 200);
   }
 
-  return (
+  render(){
+
+ return(
     <div>
-      <br />
+        <hr />
         <Chessboard position={game.fen()} onPieceDrop={onDrop} /> 
-      <br />
+        <hr /> 
     </div> 
-    
   )
+}
 }
