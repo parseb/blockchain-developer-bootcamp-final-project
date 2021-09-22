@@ -130,9 +130,12 @@ contract GameContract {
   
   event player2Accepted(address indexed _player1, address indexed _player2, bool _accepted);
   
+  function timeOutforAccept() public {}
+
   function playerTwoAccepted(bool _accepted) public payable  {
     if (! _accepted) {
       gameData storage game =  games[myLastGame[msg.sender]];
+      require(game.playerTwo == msg.sender);
       game.player2accepted = false;
       game.gState = gameState.Rejected;
       //or cancel? w\ no refund?
@@ -145,8 +148,12 @@ contract GameContract {
       emit player2Accepted(game.playerOne, game.playerTwo, false);
     } else {
       gameData storage game = games[myLastGame[msg.sender]];
+      require(msg.value == game.settings.wageSize);
+      require(game.playerTwo == msg.sender);
       game.player2accepted = true;
-      game.gState = gameState.Staged;
+      game.gState = gameState.InProgress;
+      game.gameBalance += msg.value;
+
       emit player2Accepted(game.playerOne, game.playerTwo, true);
     }
   }

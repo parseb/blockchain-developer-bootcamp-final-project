@@ -86,6 +86,10 @@ class App extends Component {
 
   acceptGameInvite= async () =>{
     console.log("clicked Accepted")
+    const { accounts, contract, web3js } = this.state;
+    let createCall= await contract.methods.playerTwoAccepted(true);
+    createCall.send({from: accounts[0], value: this.state.currentGame.settings.wageSize});
+
   }
 
 
