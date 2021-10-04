@@ -5,7 +5,8 @@ import  Chess  from 'chess.js';
 import { Chessboard } from 'react-chessboard';
 import { Col, Container, Row } from 'react-bootstrap';
 
-export default function ChessBoard2(stateprop, user) {
+
+export default function ChessBoard2(context, state, submitM) {
   const [game, setGame] = useState(new Chess());
 
   
@@ -28,9 +29,9 @@ export default function ChessBoard2(stateprop, user) {
 //     });
 //   }
 
-  function onDrop(sourceSquare, targetSquare) {
-    console.log(sourceSquare, targetSquare, game.fen())
-
+  function onDrop(sourceSquare, targetSquare,context) {
+    console.log(sourceSquare, targetSquare, game.fen(), context)
+    
     let move = null;
     safeGameMutate((game) => {
       move = game.move({
@@ -39,7 +40,19 @@ export default function ChessBoard2(stateprop, user) {
         promotion: 'q' // always promote to a queen for example simplicity
       });
     });
-    if (move === null) return; // illegal move
+
+
+    if (move === null) {
+      console.log("Illegal Move");
+    } else {
+      
+        let move = String(game.fen());
+        //state.setState({'moveToSubmit': move});
+        console.log("submitted move", move, context);
+        
+        //push.call();
+   
+    }
     //setTimeout(makeRandomMove, 200);
   }
 
