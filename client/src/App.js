@@ -357,7 +357,7 @@ class App extends Component {
               </Row>
               <hr />
               <Row>
-               Game Info 
+                {claimTimeoutVictory()}
               </Row>
               <hr />
             </Card>
@@ -380,24 +380,24 @@ class App extends Component {
       if (this.state.currentGame[4] !== "0x0000000000000000000000000000000000000000") {
         if (this.state.currentGame[1] === this.state.accounts[0]) { 
           
-          let minutes = Math.floor(parseInt(this.state.currentGame[10]) / 60)
-          let secs= parseInt(this.state.currentGame[10]) - minutes * 60
+          let minutes = Math.floor(parseInt(this.state.currentGame.p1Time) / 60)
+          let secs= parseInt(this.state.currentGame.p1Time) - minutes * 60
           return( <p>{minutes}:{secs}</p>)
         } else {
           
-          let minutes = Math.floor(parseInt(this.state.currentGame[9]) / 60)
-          let secs= parseInt(this.state.currentGame[9]) - minutes * 60
+          let minutes = Math.floor(parseInt(this.state.currentGame.p2Time) / 60)
+          let secs= parseInt(this.state.currentGame.p2Time) - minutes * 60
           return( <p>{minutes}:{secs}</p>)
         }
       }
       
     }
 
-    const claimTimeoutVictory = () => {
-      if (parseInt(this.state.currentGame[9])< 1 || parseInt(this.state.currentGame[10]) < 1) {
-        if(this.state.accounts[0] !== this.state.currentGame.settings.firstToZero) {
+    const claimTimeoutVictory = async () => {
+      if (parseInt(this.state.currentGame.p1Time)< 1 || parseInt(this.state.currentGame.p2Time) < 1) {
+        if(this.state.accounts[0] !== this.state.currentGame[12]) {
           return( 
-            <Button variant="warning" size="lg" onClick={this.otherPlayerTimedOut} > Resign </Button> 
+            <Button variant="warning" size="lg" onClick={this.otherPlayerTimedOut} > Time Flag Victory </Button> 
           )
         }
       }
@@ -406,10 +406,10 @@ class App extends Component {
     const thisPlayerCounter = () => {
       let isTurn = (this.state.currentGame[4] !== this.state.accounts[0]) && parseInt(this.state.currentGame[2]) > 1 && ( this.state.currentGame[4] !== "0x0000000000000000000000000000000000000000")
       if (this.state.color === "black" && isTurn) {
-        return ( <Countdown date={Date.now() + parseInt(this.state.currentGame[10]) * 1000 } /> )
+        return ( <Countdown date={Date.now() + parseInt(this.state.currentGame.p1Time) * 1000 } /> )
       } else if (this.state.color === "white" && isTurn)
       {
-        return ( <Countdown date={Date.now() + parseInt(this.state.currentGame[9]) * 1000 } /> )  
+        return ( <Countdown date={Date.now() + parseInt(this.state.currentGame.p2Time) * 1000 } /> )  
       }
     }
     
