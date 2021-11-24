@@ -1,1 +1,1 @@
-***SlyDe.Fi Frontend JS Vanilla - Moralis***
+**_SlyDe.Fi Frontend_**
