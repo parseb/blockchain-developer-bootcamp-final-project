@@ -16,6 +16,9 @@ http://slyde.fi
 #### Installing dependencies AND Running/Testing locally
 
 Install [solc-select](https://github.com/crytic/solc-select) just so we're on the same page. <br>
+Also, a good idea would be to have truffle installed (and npm): <br>
+>npm install -g truffle 
+
 Did you clone the repo? No? Why not? ...I hope it's cloned by now. If not, you're in [big trouble](https://www.youtube.com/watch?v=IuRC3HEJ71M&ab_channel=JoelF1). <br/>
 
 Now you are faced with a choice. Do you want to run your tests with or without forking mumbai testnet?
@@ -24,14 +27,14 @@ Now you are faced with a choice. Do you want to run your tests with or without f
 
 SlyDe.Fi is supportive of forking. Some of our best friends are forkers. <br>
 
-> bash ./run\*tests.sh
+> bash ./run_tests.sh
 
-press \_m\* to fork mumbai testnet and run tests
+press m to fork mumbai testnet and run tests
 
 ##### Locally
 
 > bash ./run*tests.sh
-> press \_l* to run local test suite
+> press l to run local test suite
 
 ##### I trust every other line of code in this repo with the exception of your bashable script
 
