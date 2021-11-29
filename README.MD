@@ -33,8 +33,9 @@ press m to fork mumbai testnet and run tests
 
 ##### Locally
 
-> bash ./run*tests.sh
-> press l to run local test suite
+> bash ./run_tests.sh
+
+press l to run local test suite
 
 ##### I trust every other line of code in this repo with the exception of your bashable script
 
