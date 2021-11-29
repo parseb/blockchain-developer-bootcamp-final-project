@@ -14,6 +14,8 @@
 <p>Follows Truffle directory structure. The ./frontend/ directory structure is explicit.</p>
 <p>Where frontend?: ./frontend  </p>
 
+<hr>
+
 ###### Live Instance
 
 https://crimson-fire-2733.on.fleek.co/ <br/>
