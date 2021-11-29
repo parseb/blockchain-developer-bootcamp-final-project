@@ -24,18 +24,18 @@ Now you are faced with a choice. Do you want to run your tests with or without f
 
 SlyDe.Fi is supportive of forking. Some of our best friends are forkers. <br>
 
->bash ./run*tests.sh
+> bash ./run\*tests.sh
 
-press \_m* to fork mumbai testnet and run tests
+press \_m\* to fork mumbai testnet and run tests
 
 ##### Locally
 
->bash ./run*tests.sh
-press \_l* to run local test suite
+> bash ./run*tests.sh
+> press \_l* to run local test suite
 
 ##### I trust every other line of code in this repo with the exception of your bashable script
 
->npm install && truffle test
+> npm install && truffle test
 
 ##### Walkthrough
 
