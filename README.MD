@@ -70,4 +70,8 @@ No clue how any of this works on Windows.
 
 Feel free to send NFTs and Moneys here: <br>
 
-> 0xE7b30A037F5598E4e73702ca66A59Af5CC650Dcd
+> 0xE7b30A037F5598E4e73702ca66A59Af5CC650Dcd <br>
+
+#### For Questions or trojan-horse-like questions
+[@parseb](https://twitter.com/parseb)
+
