@@ -13,30 +13,31 @@
 https://crimson-fire-2733.on.fleek.co/
 http://slyde.fi
 
-#### Installing dependencies && Running / Testing locally
+#### Installing dependencies AND Running/Testing locally
 
 Install [solc-select](https://github.com/crytic/solc-select) just so we're on the same page. <br>
 Did you clone the repo? No? Why not? ...I hope it's cloned by now. If not, you're in [big trouble](https://www.youtube.com/watch?v=IuRC3HEJ71M&ab_channel=JoelF1). <br/>
 
 Now you are faced with a choice. Do you want to run your tests with or without forking mumbai testnet?
 
-###### Fork Mumbai:
+##### Fork Mumbai:
 
 SlyDe.Fi is supportive of forking. Some of our best friends are forkers. <br>
 
-bash ./run*tests.sh
+>bash ./run*tests.sh
+
 press \_m* to fork mumbai testnet and run tests
 
-###### Locally
+##### Locally
 
-bash ./run*tests.sh
+>bash ./run*tests.sh
 press \_l* to run local test suite
 
-###### I trust every other line of code in this repo with the exception of your bashable script
+##### I trust every other line of code in this repo with the exception of your bashable script
 
-npm install && truffle test
+>npm install && truffle test
 
-###### Walkthrough
+##### Walkthrough
 
 ##### Windows
 
