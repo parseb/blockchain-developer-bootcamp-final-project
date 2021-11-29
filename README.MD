@@ -41,7 +41,7 @@ press l to run local test suite
 
 ##### Walkthrough
 
-https://drive.google.com/file/d/199BwMSmDtODUE-mu7izYspOtFHhmobbs/view?usp=sharing
+https://youtu.be/hRMocVaDj4E
 
 ##### Windows
 
