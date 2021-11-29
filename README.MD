@@ -16,7 +16,7 @@ http://slyde.fi
 #### Installing dependencies && Running / Testing locally
 
 Install [solc-select](https://github.com/crytic/solc-select) just so we're on the same page. <br>
-Did you clone the repo? No? Why not? ...I hope it's cloned by now. If not, you're in (big trouble)[https://www.youtube.com/watch?v=IuRC3HEJ71M&ab_channel=JoelF1]. <br/>
+Did you clone the repo? No? Why not? ...I hope it's cloned by now. If not, you're in [big trouble](https://www.youtube.com/watch?v=IuRC3HEJ71M&ab_channel=JoelF1). <br/>
 
 Now you are faced with a choice. Do you want to run your tests with or without forking mumbai testnet?
 
