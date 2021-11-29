@@ -25,8 +25,6 @@ Now you are faced with a choice. Do you want to run your tests with or without f
 
 ##### Fork Mumbai:
 
-SlyDe.Fi is supportive of forking. Some of our best friends are forkers. <br>
-
 > bash ./run_tests.sh
 
 press m to fork mumbai testnet and run tests
