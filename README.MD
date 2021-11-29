@@ -52,7 +52,7 @@ press l to run local test suite
 
 You will need a Moralis server. At the top of main.js you have to define: <br>
 
-> const SERVER_URL /// Moralis Server URL
+> const SERVER_URL /// Moralis Server URL <br>
 > const APPID ///Moralis App ID
 
 After that, just open Index.html in a browser.
