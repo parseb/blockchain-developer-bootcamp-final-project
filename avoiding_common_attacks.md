@@ -13,7 +13,7 @@ The primary contract: uses a fixed pragma version, makes use of pull payments (d
 <p>
     <ul>
         <li>Not much of an effort in validating user inputs.</li>
-        <li>[Return values](https://consensys.net/diligence/audits/2020/09/aave-protocol-v2/#unhandled-return-values-of-transfer-and-transferfrom) from external calls missing/not used.</li>
+        <li>(Return values)[https://consensys.net/diligence/audits/2020/09/aave-protocol-v2/#unhandled-return-values-of-transfer-and-transferfrom] from external calls missing/not used.</li>
         <li>Very dependent on Chainlink services. </li>
         <li>Event coverage unchecked. </li>
         <li>Insufficient test coverage. </li>
