@@ -6,13 +6,13 @@
 
 <p>Blockchain Developer Bootcamp Final Project Submission</p>
 
-<p>describes the project: Jesus. Has nothing to do with this. But, you can bet your cake and eat it too. </p><br>
-<p> SlyDe.fi is an entartaining prediction overconfidence exploiting re-distributive mechanism that uses pool-todghether-like yield farming.</p><br>
+###### Required Statements:
+
+<p>describes the project: Jesus. Has nothing to do with this. But, you can bet your cake and eat it too.</p>
+<p>SlyDe.fi is an entartaining prediction overconfidence exploiting re-distributive mechanism that uses pool-todghether-like yield farming.</p>
 <p>Or, it's just a dapp that makes NFT graphs.</p>
-
 <p>Follows Truffle directory structure. The ./frontend/ directory structure is explicit.</p>
-
-<p>where the frontend project can be accessed: ./frontend  </p>
+<p>Where frontend?: ./frontend  </p>
 
 ###### Live Instance
 
@@ -48,7 +48,7 @@ press l to run local test suite
 
 ##### I want to run the frontend locally
 
-You will need a Moralis endpoint. At the top of main.js you will need to define: <br>
+You will need a Moralis server. At the top of main.js you have to define: <br>
 
 > const SERVER_URL /// Moralis Server URL
 > const APPID ///Moralis App ID
