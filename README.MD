@@ -6,18 +6,25 @@
 
 <p>Blockchain Developer Bootcamp Final Project Submission</p>
 
-<p></p>
+<p>describes the project: Jesus. Has nothing to do with this. But, you can bet your cake and eat it too. </p><br>
+<p> SlyDe.fi is an entartaining prediction overconfidence exploiting re-distributive mechanism that uses pool-todghether-like yield farming.</p><br>
+<p>Or, it's just a dapp that makes NFT graphs.</p>
+
+<p>Follows Truffle directory structure. The ./frontend/ directory structure is explicit.</p>
+
+<p>where the frontend project can be accessed: ./frontend  </p>
 
 ###### Live Instance
 
-https://crimson-fire-2733.on.fleek.co/  <br/>
-http://slyde.fi 
+https://crimson-fire-2733.on.fleek.co/ <br/>
+http://slyde.fi
 
 #### Installing dependencies AND Running/Testing locally
 
 Install [solc-select](https://github.com/crytic/solc-select) just so we're on the same page. <br>
 Also, a good idea would be to have truffle installed (and npm): <br>
->npm install -g truffle 
+
+> npm install -g truffle
 
 Did you clone the repo? No? Why not? ...I hope it's cloned by now. If not, you're in [big trouble](https://www.youtube.com/watch?v=IuRC3HEJ71M&ab_channel=JoelF1). <br/>
 
@@ -39,11 +46,26 @@ press l to run local test suite
 
 > npm install && truffle test
 
+##### I want to run the frontend locally
+
+You will need a Moralis endpoint. At the top of main.js you will need to define: <br>
+
+> const SERVER_URL /// Moralis Server URL
+> const APPID ///Moralis App ID
+
+After that, just open Index.html in a browser.
+
 ##### Walkthrough
 
 [screencast](https://youtu.be/hRMocVaDj4E)
 
 ##### Windows
 
-No clue how any of this works on Windows. 
+No clue how any of this works on Windows.
 #TODO: Call Windows support and ask. #good first issue
+
+#### Address
+
+Feel free to send NFTs and Moneys here: <br>
+
+> 0xE7b30A037F5598E4e73702ca66A59Af5CC650Dcd

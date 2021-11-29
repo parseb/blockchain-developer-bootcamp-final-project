@@ -1,6 +1,12 @@
 
 /** DEV ENV ONLY */
-
+const SERVER_URL /// MORALIS SERVER URL
+const APPID = /// MORALIS APP ID
+const WETH_ADDR = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
+const DAI_ADDR = "0x001B3B4d0F3714Ca98ba10F6042DaEbF0B1B7b6F";
+const CONTRACT_ADDRESS = "0x46Fd68A731633EcF225d43f67c7E0F706cb87dA1";
+///const CONTRACT_ADDRESS = "0xA908902456F6a200F93bF15ed486864550288537";
+///@dev IMPORTANT: move to .env
 
 ////@TODO: add what s missing from here
 ///@dev IMPORTANT: move to .env
