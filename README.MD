@@ -8,7 +8,7 @@
 
 ###### Required Statements:
 
-<p>describes the project: Jesus. Has nothing to do with this. But, you can bet your cake and eat it too.</p>
+<p>describes the project: Jesus. Has nothing to do with this. Which makes it harder.</p>
 <p>SlyDe.fi is an entartaining prediction overconfidence exploiting re-distributive mechanism that uses pool-todghether-like yield farming.</p>
 <p>Or, it's just a dapp that makes NFT graphs.</p>
 <p>Follows Truffle directory structure. The ./frontend/ directory structure is explicit.</p>
