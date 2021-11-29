@@ -10,8 +10,8 @@
 
 ###### Live Instance
 
-https://crimson-fire-2733.on.fleek.co/
-http://slyde.fi
+https://crimson-fire-2733.on.fleek.co/  <br/>
+http://slyde.fi 
 
 #### Installing dependencies AND Running/Testing locally
 
@@ -39,7 +39,9 @@ press \_m\* to fork mumbai testnet and run tests
 
 ##### Walkthrough
 
+https://drive.google.com/file/d/199BwMSmDtODUE-mu7izYspOtFHhmobbs/view?usp=sharing
+
 ##### Windows
 
-No clue how any of this works on Windows.
-#TODO: Call Windows support and ask.
+No clue how any of this works on Windows. 
+#TODO: Call Windows support and ask. #good first issue
