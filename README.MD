@@ -56,9 +56,6 @@ You will need a Moralis server. At the top of main.js you have to define: <br>
 
 After that, just open Index.html in a browser.
 
-##### Walkthrough
-
-[screencast](https://youtu.be/hRMocVaDj4E)
 
 ##### Windows
 
