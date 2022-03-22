@@ -57,17 +57,6 @@ You will need a Moralis server. At the top of main.js you have to define: <br>
 After that, just open Index.html in a browser.
 
 
-##### Windows
-
-No clue how any of this works on Windows.
-#TODO: Call Windows support and ask. #good first issue
-
-#### Address
-
-Feel free to send NFTs and Moneys here: <br>
-
-> 0xE7b30A037F5598E4e73702ca66A59Af5CC650Dcd <br>
-
 #### For Questions or trojan-horse-like questions
 [@parseb](https://twitter.com/parseb)
 
